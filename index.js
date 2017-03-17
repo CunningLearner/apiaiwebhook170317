@@ -22,7 +22,7 @@ client.on('message', function (topic, message) {
         //return console.log(err);
     //}
 //console.log("The file was saved!");
-});
+//});
   
 })
 
