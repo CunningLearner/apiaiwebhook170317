@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 
 var mqtt = require('mqtt')
-var fs = require('fs');
+//var fs = require('fs');
 
 var client = mqtt.connect('mqtt://broker.hivemq.com', {username:'gs99100', password:'horrendous'});
 
@@ -17,10 +17,10 @@ client.on('message', function (topic, message) {
   // message is Buffer 
   var sensoread = message.toString()
   console.log(message.toString())
-  fs.writeFile("test", sensoread, function(err) {
-    if(err) {
-        return console.log(err);
-    }
+  //fs.writeFile("test", sensoread, function(err) {
+    //if(err) {
+        //return console.log(err);
+    //}
 //console.log("The file was saved!");
 });
   
@@ -56,7 +56,7 @@ restService.post('/hook', function (req, res) {
         console.log('result: ', speech);
 		client.publish('apiai/ireading', speech)
 		//console.log("rest in peace")
-		fs.readFile('test','utf8', function(err, contents) {
+		//fs.readFile('test','utf8', function(err, contents) {
 					//console.log("The content of the file"+contents);
 //});
 		var sread = contents
@@ -66,7 +66,7 @@ restService.post('/hook', function (req, res) {
             sensor: sread,
             source: 'apiai-webhook-IOTecosystem'
         });
-        });
+        //});
     } catch (err) {
         console.error("Can't process request", err);
 
