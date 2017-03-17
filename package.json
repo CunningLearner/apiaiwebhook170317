@@ -1,5 +1,5 @@
 {
-  "name": "apiaiwebhook with sensor",
+  "name": "apiaiwebhook",
   "version": "1.0.0",
   "description": "Webhook interacting with sensors in IOT ecosystem",
   "main": "index.js",
