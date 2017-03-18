@@ -15,6 +15,7 @@ client.subscribe('apiai/sreading')
 
 client.on('message', function (topic, message) {
   // message is Buffer 
+  if (topic == 'apiai/sreading') {
   var sensoread = message.toString()
   console.log(message.toString())
   fs.writeFile("test", sensoread, function(err) {
@@ -23,7 +24,7 @@ client.on('message', function (topic, message) {
     }
 //console.log("The file was saved!");
 });
-  
+}
 })
 
 const restService = express();
