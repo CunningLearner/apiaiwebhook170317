@@ -62,8 +62,7 @@ restService.post('/hook', function (req, res) {
 		var sread = contents
         return res.json({
             speech: speech,
-            displayText: speech,
-            sensor: sread,
+            displayText: sread,
             source: 'apiai-webhook-IOTecosystem'
         });
         });
