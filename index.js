@@ -26,6 +26,7 @@ client.on('message', function (topic, message) {
 });
 }
 })
+
 const restService = express();
 restService.use(bodyParser.json());
 
@@ -38,7 +39,19 @@ restService.post('/hook', function (req, res) {
 
         if (req.body) {
             var requestBody = req.body;
-	    speech = requestBody.result.resolvedQuery;
+
+            if (requestBody.result) {
+                speech = '';
+
+                if (requestBody.result.fulfillment) {
+                    speech += requestBody.result.fulfillment.speech;
+                    speech += ' ';
+                }
+
+                if (requestBody.result.action) {
+                    speech += 'action: ' + requestBody.result.action;
+                }
+            }
         }
 
         console.log('result: ', speech);
@@ -47,10 +60,7 @@ restService.post('/hook', function (req, res) {
 		fs.readFile('test','utf8', function(err, contents) {
 					console.log("The content of the file"+contents);
 //});
-				
 		var sread = contents
-		if (speech == "sensor "){
-			speech+=sread;}
         return res.json({
             speech: speech,
             displayText:sread,
